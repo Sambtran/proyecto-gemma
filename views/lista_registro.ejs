@@ -1,0 +1,41 @@
+<%- include('cabecera'); %>
+<link rel="stylesheet" href="/public/stylesheets/registros.css">
+
+<h1>Listado de Square Run</h1>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">Nick</th>
+        <th scope="col">Juego</th>
+        <th scope="col">Puntos</th>
+        </tr>
+        <%
+        if (registros.length == 0) {
+        %>
+        
+        <p>No se han encontrado participantes que mostrar</p>
+        
+        <%
+        } else {
+        %>
+        
+        <tr>
+        
+        <%
+            registros.forEach(registro => {
+        %>
+        <tr>
+                <td scope="col"><%=registro.nombre%></td><td scope="col"><%=registro.nombrej%></td><td scope="col"><%=registro.puntos%></td>
+        <%
+            });
+        %>
+        </tr>
+        <%
+        }
+        %>
+      </tr>
+    </thead>
+ 
+</table>
+

@@ -1,21 +1,40 @@
-<!doctype html>
+<!DOCTYPE html>
 <html>
-    <head>
-        <meta charset="utf8">
-        <link href="/public/css/bootstrap.min.css" rel="stylesheet">
-        <link href="/public/css/estilos.css" rel="stylesheet">
-        <script type="text/javascript" src="../public/javascripts/jquery.min.js"></script>
-        <script type="text/javascript" src="../public/javascripts/app.js"></script>
-        
-    </head>
-    <div class="container">
-        <div id="cabecera">
-            <div id="titulo">
-                <div id="logo"><img src="/public/imgs/carreras_logo.png" /></div>
-                <div id="textotitulo">Participantes inscritos</div>
-            </div>
-            <a class="btn btn-secondary" href="/participantes">Listar participantes</a>&nbsp;&nbsp;&nbsp;
-            <a class="btn btn-secondary" href="/nuevo_participante">Nuevo Participante</a>&nbsp;&nbsp;&nbsp;        
-            <a class="btn btn-secondary" href="/nueva_categoria">Nueva categoría</a>&nbsp;&nbsp;&nbsp;        
-           
-        </div>            
+  <head>
+    <meta charset="utf8" />
+    <link href="/public/css/bootstrap.min.css" rel="stylesheet" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+  </head>
+  <style>
+    *{
+        box-sizing: border-box;
+        padding: 0; margin: 0;
+    }
+  </style>
+  <nav class="navbar navbar-expand-lg navbar-light bg-light">
+    <a class="navbar-brand" href="#">MinijuegosXD</a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarText" aria-controls="navbarText" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarText">
+      <ul class="navbar-nav mr-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home <span class="sr-only"></span></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/registros">registros</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/juegos">juegos</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/juegos/square">dino</a>
+        </li>
+      </ul>
+    </div>
+  </nav>

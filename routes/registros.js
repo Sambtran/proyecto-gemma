@@ -1,11 +1,8 @@
 var express = require('express');
 var router = express.Router();
-let registro = require(__dirname + '/../models/registro.js');
+let registro = require('../models/registro.js');
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
-  res.render('dino');
-});
 router.post('/', (req, res) => {
   let nuevoregistro = new registro({
       nombrej: req.body.nombrej,
@@ -18,5 +15,12 @@ router.post('/', (req, res) => {
   }).catch(error => {
       res.send({error: true, mensajeError:"Error añadiendo registro"});
   });
+});
+router.get('/', (req, res) => {
+  registro.find().sort({puntos:-1}).then(resultado => {
+      res.render('lista_registro', {registros: resultado});            
+  }).catch(error => {
+      res.render('lista_registro', {registros: []});
+  })
 });
 module.exports = router;

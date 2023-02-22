@@ -9,12 +9,13 @@ const bodyParser = require('body-parser');
 var indexRouter = require('./routes/index');
 var usersRouter = require('./routes/users');
 var registrosRouter = require('./routes/registros');
-
+var juegosRouter = require('./routes/juegos');
 
 
 var app = express();
 mongoose.Promise = global.Promise;
 mongoose.connect('mongodb://localhost:27017/minijuegos');
+app.use('/public', express.static(__dirname + '/public'));
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -29,6 +30,8 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', indexRouter);
 app.use('/users', usersRouter);
 app.use('/registros', registrosRouter);
+app.use('/juegos', juegosRouter);
+
 
 
 // catch 404 and forward to error handler

@@ -1,15 +1,32 @@
+function fichar()
+{
+    
+  if(highscoreold<highScore){
+    console.log(highscoreold)
+    console.log(highScore)
+    highscoreold = highScore
+    highScore = parseInt(highScore)
+    $.ajax({
+        url:"/registros",
+        type:"POST",
+        data: JSON.stringify({nombre: nombret, nombrej: nombrejt,puntos: highScore}),
+        contentType:"application/json; charset=utf-8",
+        dataType:"json",
+        success: function(data) {
+        }
+    });}else{
+      
+    }
+}
+let nombrejt="Square Run"  
+let nombret = window.prompt("dame tu nombre")
+let highscoreold = localStorage.getItem("highscore")
 let title = $("h1");
 
 title.css("text-transform", "uppercase");
 
-// let canvas = $("#canvas");
-// canvas.css("width", "70vw");
-// canvas.width = $("#canvas").css("width");
-// canvas.height = $("#canvas").css("height");
-// console.log(canvas.width);
-// console.log(canvas.height);
 
-let canvas = document.getElementById("canvas");
+let canvas = $("#canvas")[0];
 let ctx = canvas.getContext("2d");
 
 let score;
@@ -211,10 +228,8 @@ function Playing() {
       spawnTimer = initialSpawnTime;
       gameSpeed = 1.5;
       window.localStorage.setItem("highscore", highScore);
-      //cancelAnimationFrame(Playing);
-      //requestAnimationFrame(Stop)
-    //   end = true;
-    //   Stop();
+      fichar();
+     
     }
 
     en.Update();
@@ -230,63 +245,24 @@ function Playing() {
     higScoreText.text = "Highscore: " + parseInt(highScore);
   }
   higScoreText.Draw();
-  gameSpeed += 0.0003;
-    // } else {
-    //   enemies = [];
-    //   score = 0;
-    //   spawnTimer = initialSpawnTime;
-    //   gameSpeed = 1.5;
-    //   spawnTimer = initialSpawnTime;
-    //   //cancelAnimationFrame(Playing);
-
-    // }
+  gameSpeed += 0.003;
+   
 }
-// function Restart(ev) {
-//   //console.log(ev.code)
-//   if ((ev.code = "Enter")) {
 
-//     end = false;
-//     console.log(1)
-//     requestAnimationFrame(Playing);
-
-//     document.removeEventListener("keydown",Restart())
-//     //requestAnimationFrame(Playing);
-//   }
-// }
-// function Stop() {
-//   ctx.clearRect(0, 0, canvas.width, canvas.height);
-//   ctx.beginPath();
-//   ctx.fillStyle = "black";
-//   ctx.font = "50px sans-serif";
-//   ctx.textAlign = "center";
-//   ctx.fillText("End", canvas.width / 2, canvas.height / 2);
-//   ctx.closePath();
-//   canvas.replaceWith(canvas.cloneNode(true));
-//   document.addEventListener("keydown", (ev) => {
-//     if (ev.code == "Enter") {
-      
-//       Start();
-//       document.addEventListener("keydown", (ev) => {
-//         keys[ev.code] = true;
-//       });
-  
-//       document.addEventListener("keyup", (ev) => {
-//         keys[ev.code] = false;
-//       });
-//     }
-//   });
-//   //document.addEventListener("keydown", (ev) => Restart(ev));
-// }
-document.addEventListener("keydown", (ev) => {
+let enter = false;
+$("body").keydown(ev =>{
   if (ev.code == "Enter") {
+    if(!enter){
+      Start();
+      enter= true;
+      $("body").keydown(ev =>{
+        keys[ev.code] = true;
+      });
+  
+      $("body").keyup(ev =>{
+        keys[ev.code] = false;
+      });
+    }
     
-    Start();
-    document.addEventListener("keydown", (ev) => {
-      keys[ev.code] = true;
-    });
-
-    document.addEventListener("keyup", (ev) => {
-      keys[ev.code] = false;
-    });
-  }
+      }
 });

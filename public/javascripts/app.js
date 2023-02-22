@@ -1,28 +1,19 @@
-
-
-function fichar()
+ function fichar()
 {
-    console.log($("prueba").val())
-
+    
+  if(highscoreold<=highScore){
+    highscoreold = highScore
+    highScore = parseInt(highScore)
     $.ajax({
         url:"/registros",
         type:"POST",
-        data: JSON.stringify({nombre: $("#nombre").val(), nombrej: $("#nombrej").val(),puntos: $("puntos").val}),
+        data: JSON.stringify({nombre: nombret, nombrej: nombrejt,puntos: highScore}),
         contentType:"application/json; charset=utf-8",
         dataType:"json",
         success: function(data) {
         }
-    });
+    });}else{
+      
+    }
 }
-function borrarParticipante(id) 
-{
-    $.ajax({
-        url:"/participantes/" + id,
-        type:"DELETE",
-        contentType:"application/json; charset=utf-8",
-        dataType:"json",
-        success: function(data) {
-            window.location = "/participantes";
-        }
-    });
-}
+
